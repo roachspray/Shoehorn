@@ -335,7 +335,7 @@ gradle build json file, I wrote a Python [wrapper script](https://github.com/roa
 This is also a decent example of how one could do the SeaHorn task via a external tool, but invoked from 
 the build.
 
-Adding an external tool to Android Studio is not so bad. You go to the preferences for Android Studio and
+Adding an external tool to Android Studio is not so bad. You go to the settings for Android Studio and
 there is a category named "Tools"; under this there is a section for "External Tools". There you can 
 add a tool and how it is to be executed.
 
