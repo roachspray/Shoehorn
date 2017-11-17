@@ -1,32 +1,8 @@
 diff --git a/py/sea/commands.py b/py/sea/commands.py
-index 1acc8ae..238fd90 100644
+index 610e33f..9511023 100644
 --- a/py/sea/commands.py
 +++ b/py/sea/commands.py
-@@ -88,10 +88,6 @@ class Clang(sea.LimitedCmd):
-         self.clangCmd = sea.ExtCmd (cmd_name)
- 
-         if not all (_bc_or_ll_file (f) for f  in args.in_files):
--            cmd_name = which (['clang-mp-3.8', 'clang-3.8', 'clang'])
--            if cmd_name is None: raise IOError ('clang not found')
--            self.clangCmd = sea.ExtCmd (cmd_name)
--
-             argv = ['-c', '-emit-llvm', '-D__SEAHORN__']
-             if not self.plusplus:
-                 ## this is an invalid argument with C++/ObjC++ with clang 3.8
-@@ -103,7 +99,11 @@ class Clang(sea.LimitedCmd):
-             argv.append ('-m{0}'.format (args.machine))
- 
-             if args.include_dir is not None:
--                argv.append ('-I' + args.include_dir)
-+               if ':' in args.include_dir:
-+                    idirs = ["-I{}".format(x.strip()) for x in args.include_dir.split(":") if x.strip() != '']
-+                    argv.extend(idirs)
-+               else:
-+                    argv.append ('-I' + args.include_dir)
- 
-             include_dir = os.path.dirname (sys.argv[0])
-             include_dir = os.path.dirname (include_dir)
-@@ -760,11 +760,16 @@ class Seahorn(sea.LimitedCmd):
+@@ -767,11 +767,16 @@ class Seahorn(sea.LimitedCmd):
                                          'Constrained Horn Clauses in SMT-LIB format',
                                          allow_extra=True)
          self.solve = solve
@@ -43,7 +19,7 @@ index 1acc8ae..238fd90 100644
      def name_out_file (self, in_files, args=None, work_dir=None):
          return _remap_file_name (in_files[0], '.smt2', work_dir)
  
-@@ -809,6 +814,8 @@ class Seahorn(sea.LimitedCmd):
+@@ -816,6 +821,8 @@ class Seahorn(sea.LimitedCmd):
          ap.add_argument ('--crab',
                           help='Enable Crab abstract interpreter',
                           dest='crab', default=False, action='store_true')
@@ -52,7 +28,7 @@ index 1acc8ae..238fd90 100644
          ap.add_argument ('--bmc',
                           help='Use BMC engine',
                           dest='bmc', default=False, action='store_true')
-@@ -821,6 +828,7 @@ class Seahorn(sea.LimitedCmd):
+@@ -828,6 +835,7 @@ class Seahorn(sea.LimitedCmd):
  
          argv = list()
  
@@ -60,7 +36,7 @@ index 1acc8ae..238fd90 100644
          if args.bmc:
              argv.append ('--horn-bmc')
  
-@@ -880,8 +888,12 @@ class Seahorn(sea.LimitedCmd):
+@@ -887,8 +895,12 @@ class Seahorn(sea.LimitedCmd):
          # pick out extra seahorn options
          argv.extend (filter (_is_seahorn_opt, extra))
  
