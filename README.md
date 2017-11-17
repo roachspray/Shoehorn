@@ -350,3 +350,13 @@ Fisher, et al., "The HACMS program: using formal methods to eliminate exploitabl
 Woodcock, et al., "Formal methods: Practice and experience", Journal of ACM Computer Surveys, 2009
 ```
 
+## Acknowledgements
+
+The author recognizes Jared Carlson, Brandon Creighton, and others on the Veracode Research team who
+were willing to read an early draft and provide encouragement, as well as offer suggestions. Thank
+you to Veracode for allowing the time for the author to write this and the code.
+
+## Contact
+
+You may contact the author at areiter@veracode.com or arr@watson.org (if need personal).
+
