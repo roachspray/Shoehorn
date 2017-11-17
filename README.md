@@ -71,6 +71,18 @@ There are many routes that could be taken here, but this is just a couple.
 
 This is all quite brief and to the point. I share the plugin, the configuration in Android Studio, and basic use.
 
+Before getting started, you should build SingleOut and SeaHorn. For SeaHorn, you should apply the patch 
+provided in the repo:
+
+```
+seahorn$ patch -p1 < seahorn_master.patch
+patching file py/sea/commands.py
+Hunk #1 succeeded at 767 (offset 7 lines).
+Hunk #2 succeeded at 821 (offset 7 lines).
+Hunk #3 succeeded at 835 (offset 7 lines).
+Hunk #4 succeeded at 895 (offset 7 lines).
+seahorn$
+```
 
 ### Plugin Files
 
