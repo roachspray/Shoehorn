@@ -195,11 +195,11 @@ In the Git, it is configured for a local Maven repository, but however you do, d
 In the Project level build.gradle, add the local repo where you uploadArchives'd the plugin and the
 dependency in green:
 
-![alt text](https://github.com/roachspray/ShoeHornTEMP/blob/master/res/images/projectbuildgradle.png "project level build.gradle")
+![alt text](https://github.com/roachspray/Shoehorn/blob/master/res/images/projectbuildgradle.png "project level build.gradle")
 
 In the Module level build.gradle, where the native-lib code resides, will need the following added to the end:
 
-![alt text](https://github.com/roachspray/ShoeHornTEMP/blob/master/res/images/modulebuildgradle.png "module level build.gradle")
+![alt text](https://github.com/roachspray/Shoehorn/blob/master/res/images/modulebuildgradle.png "module level build.gradle")
 
 Toward the bottom you will see the apply command to use the plugin. Then the specification of some
 variables including location of the 'sea' binary from SeaHorn,
@@ -304,7 +304,7 @@ Java_com_example_shoehorn_MainActivity_stringFromJNI(
 
 Rebuilding in Android Studio we can see the execution of the plugin and the pass and failure results:
 
-![alt text](https://github.com/roachspray/ShoeHornTEMP/blob/master/res/images/runtimeout.png "Running in Android Studio")
+![alt text](https://github.com/roachspray/Shoehorn/blob/master/res/images/runtimeout.png "Running in Android Studio")
 
 So, ok, cool. It is a bit hokey, but it works (smile) (big grin)
 
@@ -339,12 +339,12 @@ Adding an external tool to Android Studio is not so bad. You go to the settings 
 there is a category named "Tools"; under this there is a section for "External Tools". There you can 
 add a tool and how it is to be executed.
 
-![alt text](https://github.com/roachspray/ShoeHornTEMP/blob/master/res/images/setupexternal.png  "Setup an external tool")
+![alt text](https://github.com/roachspray/Shoehorn/blob/master/res/images/setupexternal.png  "Setup an external tool")
 
  When you add it, it will be a part of the Tools->External Tools
 menu bar, so it is easy to find and use.
 
-![alt text](https://github.com/roachspray/ShoeHornTEMP/blob/master/res/images/runpossiblyannotate.png  "Run PossiblyAnnotate")
+![alt text](https://github.com/roachspray/Shoehorn/blob/master/res/images/runpossiblyannotate.png  "Run PossiblyAnnotate")
 
 So, just need to improve the methods that determine if you should look into adding annotations or not. Whee, fun.
 
