@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'maven'
+apply plugin: 'com.arrnaut.seahorn.gradle'
+
+android {
+
+    compileSdkVersion 24
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.example.shoehorn"
+        minSdkVersion 23
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            jniDebuggable true
+        }
+
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:24.0.0-beta1'
+    testCompile 'junit:junit:4.12'
+}
+
+seahornTask {
+    seahornPath = '/home/areiter/seahorn/build/run/bin/sea'
+    studioIncludePath = "/home/areiter/android-studio/jre/include"
+
+    Map<String, List<String>> c = new java.util.HashMap<String, List<String>>()
+    c.put("/native-lib.cpp", ["pass_example", "fail_example"])
+    checkConfig = c
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'externalNativeBuildDebug') {
+        task.finalizedBy 'seahornTask'
+    }
+}

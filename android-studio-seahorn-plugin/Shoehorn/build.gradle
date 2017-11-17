@@ -1,0 +1,31 @@
+plugins {
+    id 'java-gradle-plugin'
+}
+apply plugin: 'maven'
+
+group='arrnaut'
+version='0.0.25'
+
+gradlePlugin {
+    plugins {
+        seahornPlugin {
+            id = 'com.arrnaut.seahorn.gradle'
+            implementationClass = 'com.arrnaut.seahorn.SeahornGradlePlugin'
+        }
+    }
+}
+
+uploadArchives {
+	repositories {
+		mavenDeployer {
+			repository(url: uri('/home/areiter/mavenrepo'))
+		}
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+dependencies {
+	compile 'org.json:json:20171018'
+}
