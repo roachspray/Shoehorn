@@ -8,7 +8,7 @@ This is increasingly a problem as the lifecycle for non-critical system software
 increased in speed as CI/CD and DevOps increases. This is related to that in this walks the line of an
 investigation into FM tools and usability...and re-usability. 
 
-A month ago (?) @jared23 told me about XCode 9.1 having some improved support for handling the
+In late summer of 2017, Jared told me about XCode 9.1 having some improved support for handling the
 [Design by Contract-like (DbC) constructs in Swift](https://swift.org/blog/xcode-9-1-improves-display-of-fatal-errors/).
 These DbC functions are like precondition() and assert() and work at runtime. In theory, these also work
 in non-runtime program analysis and in checking invariants. These things reminded Jared (correct me if I am wrong)
@@ -54,7 +54,10 @@ Not discussed here is the fact that these methods currently would rely on the ex
 special file created by the native build system called android_gradle_build.json that describes
 the build commands. They will parse that and use some of it in arguments to SeaHorn.
  
-There are many routes that could be taken here, but this is just a couple.  
+There are many routes that could be taken here, but this is just a couple. 
+Further, realize this is just some PoC and toy code...not meant to be some
+serious attempt at a tool one would want, but a first whack at what it one
+might be like.
 
 ## What you need
 
@@ -367,6 +370,9 @@ Woodcock, et al., "Formal methods: Practice and experience", Journal of ACM Comp
 The author recognizes Jared Carlson, Brandon Creighton, and others on the Veracode Research team who
 were willing to read an early draft and provide encouragement, as well as offer suggestions. Thank
 you to Veracode for allowing the time for the author to write this and the code.
+And, preemptively, thank you to you for taking the time to look at this and
+not being deterred by the ``hacked together'' nature of things and that it is
+just a PoC not meant to be some product :-P.
 
 ## Contact
 
